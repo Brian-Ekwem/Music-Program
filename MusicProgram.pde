@@ -7,8 +7,11 @@ import ddf.minim.ugens.*;
 
 //Variables
 Minim minim;
-AudioPlayer song1;
+int numberOfSongs = 10;
+AudioPlayer[] song = new AudioPlayer[numberOfSongs];
+AudioMetaData[] songMetaData = new AudioMetaData[numberOfSongs];
 int loopIntNum = 1;
+int currentSong = numberOfSongs - numberOfSongs;
 float quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight;
 color white=#FFFFFF, reallyblack=#000000, red=#FF0000, quitButtonColour, green=#20AF25, black=#1C1C1C;
 float backgroundX, backgroundY, backgroundW, backgroundH, listX, listY, listW, listH;
@@ -25,8 +28,49 @@ void setup() {
   fullScreen();
   population();
   minim = new Minim(this);
-  song1 = minim.loadFile("Music/Stairway - Patrick Patrikios.mp3");
-  song1.play();
+
+  song[currentSong] = minim.loadFile("Music/Stairway - Patrick Patrikios.mp3");
+  song[currentSong+=1] = minim.loadFile("Music/Yah Yah - josh pan.mp3");
+  song[currentSong+=1] = minim.loadFile("Music/Simple - Patrick Patrikios.mp3");
+  song[currentSong+=1] = minim.loadFile("Music/Muriel - Bobby Richards.mp3");
+  song[currentSong+=1] = minim.loadFile("Music/Lights - Patrick Patrikios.mp3");
+  song[currentSong+=1] = minim.loadFile("Music/Just Dance - Patrick Patrikios.mp3");
+  song[currentSong+=1] = minim.loadFile("Music/June - Bobby Richards.mp3");
+  song[currentSong+=1] = minim.loadFile("Music/Feels - Patrick Patrikios.mp3");
+  song[currentSong+=1] = minim.loadFile("Music/Calvin Harris - josh pan.mp3");
+  song[currentSong+=1] = minim.loadFile("Music/Brass Orchid - Bobby Richards.mp3");
+  //
+  currentSong = numberOfSongs - numberOfSongs;
+  for (int i=currentSong; i<numberOfSongs; i++) {
+    songMetaData[i] = song[i].getMetaData();
+  }
+  //
+  println("Start of Console");
+  println("Click the Console to Finish Starting this program");
+  println("Press keyboard to test: P, etc.");
+  //
+  for (int i=currentSong; i<numberOfSongs; i++) {
+    println("File Name: ", songMetaData[i].fileName());
+    println("Song Length (in milliseconds); ", songMetaData[i].length());
+    println("Song Length (in seconds): ", songMetaData[i].length()/1000);
+    println("Song Length (in minutes and seconds): ", songMetaData[i].length()/1000/60, "minutes", (songMetaData[i].length()/1000)-(songMetaData[i].length()/1000/60*60), "seconds");
+    println("Song Title: ", songMetaData[i].title());
+    println("Author: ", songMetaData[i].author());
+    println("Composer: ", songMetaData[i].composer());
+    println("Orchestra: ", songMetaData[i].orchestra());
+    println("Album: ", songMetaData[i].album());
+    println("Disk: ", songMetaData[i].disc());
+    println("Publisher: ", songMetaData[i].publisher());
+    println("Date Release: ", songMetaData[i].date());
+    println("Copyright: ", songMetaData[i].copyright());
+    println("Comments: ", songMetaData[i].comment());
+    println("Lyrics: ", songMetaData[i].lyrics());
+    println("Track: ", songMetaData[i].track());
+    println("Genre: ", songMetaData[i].genre());
+    println("Encoded: ", songMetaData[i].encoded());
+  }
+  //
+  song[currentSong].play();
   fill(reallyblack);
   rect(backgroundX, backgroundY, backgroundW, backgroundH);
   //
@@ -77,7 +121,7 @@ void setup() {
   //
   fill(black);
   ellipse(loopX, loopY, loopD, loopD);
-   textDraw2();
+  textDraw2();
   //
   if ( mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight ) { 
     quitButtonColour = white;
@@ -97,51 +141,66 @@ void draw() {
 void mousePressed() {
   if (mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight) exit();
   //
-  if (mouseX>fastB1X && mouseX<fastB1X+fastB2X+fastB3X && mouseY>fastB1Y && mouseY<fastB1Y+fastB2Y+fastB3Y) song1.skip(1000); 
-  if (mouseX>rewB1X && mouseX<rewB1X+rewB2X+rewB3X && mouseY>rewB1Y && mouseY<rewB1Y+rewB2Y+rewB3Y) song1.skip(-1000); 
+  if (mouseX>fastB1X && mouseX<fastB1X+fastB2X+fastB3X && mouseY>fastB1Y && mouseY<fastB1Y+fastB2Y+fastB3Y) song[currentSong].skip(1000); 
+  if (mouseX>rewB1X && mouseX<rewB1X+rewB2X+rewB3X && mouseY>rewB1Y && mouseY<rewB1Y+rewB2Y+rewB3Y) song[currentSong].skip(-1000); 
   //
   if (mouseX>play1X && mouseX<play1X+play2X+play3X && mouseY>play1Y && mouseY<play1Y+play2Y+play3Y) {//Play-Pause Button
-    if ( song1.isPlaying() ) {
-      song1.pause();
-    } else if ( song1.position() == song1.length() ) {//.legnth() = end
-      song1.rewind();
-      song1.play();
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+    } else if ( song[currentSong].position() == song[currentSong].length() ) {//.legnth() = end
+      song[currentSong].rewind();
+      song[currentSong].play();
     } else {
-      song1.play();
+      song[currentSong].play();
     }
   }
   if (mouseX>stopX && mouseX<stopX+stopW && mouseY>stopY && mouseY<stopY+stopH) {
-    if ( song1.isPlaying() ) {
-      song1.pause();
-      song1.rewind();
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
     } else { //Song is not Playing
-      song1.rewind();
+      song[currentSong].rewind();
     }
   }
-  if (mouseX>loopX && mouseX<loopX+loopD && mouseY>loopY && mouseY<loopY+loopD) song1.loop(loopIntNum);
+  //
+  if (mouseX>loopX && mouseX<loopX+loopD && mouseY>loopY && mouseY<loopY+loopD) song[currentSong].loop(loopIntNum);
 }
 
 void keyPressed() {
   //
   if ( key == 'p' || key == 'P' ) {//Play-Pause Button
-    if ( song1.isPlaying() ) {
-      song1.pause();
-    } else if ( song1.position() == song1.length() ) {//.legnth() = end
-      song1.rewind();
-      song1.play();
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+    } else if ( song[currentSong].position() == song[currentSong].length() ) {//.legnth() = end
+      song[currentSong].rewind();
+      song[currentSong].play();
     } else {
-      song1.play();
+      song[currentSong].play();
     }
   }
   if (key == 's' || key == 'S') {
-    if ( song1.isPlaying() ) {
-      song1.pause();
-      song1.rewind();
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
     } else { //Song is not Playing
-      song1.rewind();
+      song[currentSong].rewind();
     }
   }
-  if ( key == 'f' || key == 'F') song1.skip(1000); 
-  if ( key == 'r' || key == 'R') song1.skip(-1000); 
-  if ( key == 'l' || key == 'L' ) song1.loop(loopIntNum);
+  if ( key == 'f' || key == 'F') song[currentSong].skip(1000); 
+  if ( key == 'r' || key == 'R') song[currentSong].skip(-1000); 
+  //
+  if ( key == 'l' || key == 'L' ) song[currentSong].loop(loopIntNum);
+  //
+  if (key == 'n' || key == 'N') {
+    if (song[currentSong].isPlaying()) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+    } else { 
+      song[currentSong].rewind();
+      currentSong++;
+    } 
+    if (key == 'b' || key == 'B') {
+      currentSong--;
+    }
+  }
 }

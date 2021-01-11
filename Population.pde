@@ -149,7 +149,7 @@ void population() {
   backBH = nextBH;
   //
   loopX = width*4/15;
-  loopY = height*11.3/15;
+  loopY = height*11./15;
   loopD = height*0.8/15;
   //
 }
