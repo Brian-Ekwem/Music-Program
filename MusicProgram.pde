@@ -159,11 +159,11 @@ void setup() {
 
 void draw() {
   fill(black);
-  rect(songNX, songNY, songNW, songNH);
+  rect(width*3/15, height*9/15, width*4.7/15, height*1/15);
   fill(white); 
   textAlign (CENTER, CENTER); 
   textFont(font, 45); 
-  text(songMetaData[currentSong].title(), songNX, songNY, songNW, songNH);
+  text(songMetaData[currentSong].title(), width*3/15, height*9/15, width*4.7/15, height*1/15);
   fill(255);
 }
 
