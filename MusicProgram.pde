@@ -162,7 +162,7 @@ void draw() {
   fill(white); 
   textAlign (CENTER, CENTER); 
   textFont(font, 45); 
-  text(songMetaData[currentSong].title(), width*3/15, height*9/15, width*4.7/15, height*1/15);
+  text(songMetaData[0].title(), width*3/15, height*9/15, width*4.7/15, height*1/15);
   fill(255);
 }
 
@@ -206,6 +206,11 @@ void keyPressed() {
       song[currentSong].play();
     } else {
       song[currentSong].play();
+    }
+    if (currentSong == 0) { 
+      text(String textDraw3());
+    } else { 
+      text(songMetaData[currentSong].title(), width*3/15, height*9/15, width*4.7/15, height*1/15 );
     }
   }
   //
