@@ -11,10 +11,11 @@ int numberOfSongs = 10;
 AudioPlayer[] song = new AudioPlayer[numberOfSongs];
 AudioMetaData[] songMetaData = new AudioMetaData[numberOfSongs];
 int loopIntNum = 1;
+PImage pic1;
 int currentSong = numberOfSongs - numberOfSongs;
 float quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight;
 color white=#FFFFFF, reallyblack=#000000, red=#FF0000, quitButtonColour, green=#20AF25, black=#1C1C1C;
-float backgroundX, backgroundY, backgroundW, backgroundH, listX, listY, listW, listH;
+float backgroundX, backgroundY, backgroundW, backgroundH, listX, listY, listW, listH, picX1, picY1, picWidth1, picHeight1, picImageWidthRatio1, picImageHeightRatio1;
 float song1X, song1Y, song1W, song1H, song2X, song2Y, song2W, song2H, song3X, song3Y, song3W, song3H, song4X, song4Y, song4W, song4H;
 float song5X, song5Y, song5W, song5H, song6X, song6Y, song6W, song6H, song7X, song7Y, song7W, song7H, song8X, song8Y, song8W, song8H;
 float song9X, song9Y, song9W, song9H, song10X, song10Y, song10W, song10H, songImgX, songImgY, songImgW, songImgH;
@@ -26,6 +27,7 @@ float backA1X, backA1Y, backA2X, backA2Y, backA3X, backA3Y, backBX, backBY, back
 
 void setup() {
   fullScreen();
+  pic1 = loadImage("Music/download.png");
   population();
   minim = new Minim(this);
 
@@ -44,6 +46,8 @@ void setup() {
   for (int i=currentSong; i<numberOfSongs; i++) {
     songMetaData[i] = song[i].getMetaData();
   }
+  //
+  font = createFont ("Arial", 55);
   //
   println("Start of Console");
   println("Click the Console to Finish Starting this program");
@@ -110,6 +114,7 @@ void setup() {
   //
   fill(white);
   rect(songImgX, songImgY, songImgW, songImgH);
+  image(pic1, picX1, picY1, picWidth1, picHeight1);
   rect(timeSX, timeSY, timeSW, timeSH);
   //
   fill(black);
@@ -153,12 +158,11 @@ void setup() {
 
 
 void draw() {
-  font = createFont ("Arial", 55);
-  fill(reallyblack);
+  fill(black);
   rect(songNX, songNY, songNW, songNH);
   fill(white); 
   textAlign (CENTER, CENTER); 
-  //textFont(font, 25); 
+  textFont(font, 45); 
   text(songMetaData[currentSong].title(), songNX, songNY, songNW, songNH);
   fill(255);
 }
@@ -224,16 +228,16 @@ void keyPressed() {
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
       song[currentSong].rewind();
-      if ( currentSong == numberOfSongs - numberOfSongs ) {
-        currentSong = numberOfSongs-1;
+      if ( currentSong == numberOfSongs-1 ) {
+        currentSong = numberOfSongs - numberOfSongs;
       } else {
         currentSong++;
       }
       song[currentSong].play();
     } else { 
       song[currentSong].rewind();
-      if ( currentSong == numberOfSongs - numberOfSongs ) {
-        currentSong = numberOfSongs-1;
+      if ( currentSong == numberOfSongs-1 ) {
+        currentSong = numberOfSongs - numberOfSongs;
       } else {
         currentSong++;
       }

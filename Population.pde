@@ -149,7 +149,13 @@ void population() {
   backBH = nextBH;
   //
   loopX = width*4/15;
-  loopY = height*11./15;
+  loopY = height*11.3/15;
   loopD = height*0.8/15;
   //
+  picImageWidthRatio1 = 296.0/296.0; 
+  picImageHeightRatio1 = 170.0/296.0;
+  picX1 = songImgX;
+  picY1 = songImgY;
+  picWidth1 = songImgW;
+  picHeight1 = songImgH;
 }
