@@ -156,7 +156,6 @@ void setup() {
   textDraw(); //configure the buttons
 }
 
-
 void draw() {
   fill(black);
   rect(width*3/15, height*9/15, width*4.7/15, height*1/15);
@@ -173,10 +172,10 @@ void mousePressed() {
   if (mouseX>fastB1X && mouseX<fastB1X+fastB2X+fastB3X && mouseY>fastB1Y && mouseY<fastB1Y+fastB2Y+fastB3Y) song[currentSong].skip(1000); 
   if (mouseX>rewB1X && mouseX<rewB1X+rewB2X+rewB3X && mouseY>rewB1Y && mouseY<rewB1Y+rewB2Y+rewB3Y) song[currentSong].skip(-1000); 
   //
-  if (mouseX>play1X && mouseX<play1X+play2X+play3X && mouseY>play1Y && mouseY<play1Y+play2Y+play3Y) {//Play-Pause Button
+  if (mouseX>play1X && mouseX<play1X+play2X+play3X && mouseY>play1Y && mouseY<play1Y+play2Y+play3Y) {
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
-    } else if ( song[currentSong].position() == song[currentSong].length() ) {//.legnth() = end
+    } else if ( song[currentSong].position() == song[currentSong].length() ) {
       song[currentSong].rewind();
       song[currentSong].play();
     } else {
@@ -188,7 +187,7 @@ void mousePressed() {
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
       song[currentSong].rewind();
-    } else { //Song is not Playing
+    } else { 
       song[currentSong].rewind();
     }
   }
@@ -199,10 +198,10 @@ void mousePressed() {
 
 void keyPressed() {
   //
-  if ( key == 'p' || key == 'P' ) {//Play-Pause Button
+  if ( key == 'p' || key == 'P' ) {
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
-    } else if ( song[currentSong].position() == song[currentSong].length() ) {//.length() = end
+    } else if ( song[currentSong].position() == song[currentSong].length() ) {
       song[currentSong].rewind();
       song[currentSong].play();
     } else {
