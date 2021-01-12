@@ -77,17 +77,36 @@ void setup() {
   fill(white);
   rect(listX, listY, listW, listH);
   //
-  fill(white);
+  fill(black);
   rect(song1X, song1Y, song1W, song1H);
+  textDraw3();
+  fill(black);
   rect(song2X, song2Y, song2W, song2H);
+  textDraw4();
+  fill(black);
   rect(song3X, song3Y, song3W, song3H);
+  textDraw5();
+  fill(black);
   rect(song4X, song4Y, song4W, song4H);
+  textDraw6();
+  fill(black);
   rect(song5X, song5Y, song5W, song5H);
+  textDraw7();
+  fill(black);
   rect(song6X, song6Y, song6W, song6H);
+  textDraw8();
+  fill(black);
   rect(song7X, song7Y, song7W, song7H);
+  textDraw9();
+  fill(black);
   rect(song8X, song8Y, song8W, song8H);
+  textDraw10();
+  fill(black);
   rect(song9X, song9Y, song9W, song9H);
+  textDraw11();
+  fill(black);
   rect(song10X, song10Y, song10W, song10H);
+  textDraw12();
   //
   fill(white);
   rect(songImgX, songImgY, songImgW, songImgH);
@@ -136,7 +155,16 @@ void setup() {
 
 
 void draw() {
-}//End draw()
+  /*
+  background (black);
+   rect(songNX, songNY, songNW, songNH);
+   fill(white); 
+   textAlign (CENTER, CENTER); 
+   //textFont(font, 25); 
+   text(songMetaData[currentSong].title(), songNX, songNY, songNW, songNH);
+   fill(255); 
+   */
+}
 
 void mousePressed() {
   if (mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight) exit();
@@ -178,6 +206,7 @@ void keyPressed() {
       song[currentSong].play();
     }
   }
+  //
   if (key == 's' || key == 'S') {
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
@@ -186,21 +215,50 @@ void keyPressed() {
       song[currentSong].rewind();
     }
   }
+  //
   if ( key == 'f' || key == 'F') song[currentSong].skip(1000); 
   if ( key == 'r' || key == 'R') song[currentSong].skip(-1000); 
   //
   if ( key == 'l' || key == 'L' ) song[currentSong].loop(loopIntNum);
   //
-  if (key == 'n' || key == 'N') {
-    if (song[currentSong].isPlaying()) {
+  if ( key == 'n' || key == 'N' ) {
+    if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
       song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs-1;
+      } else {
+        currentSong++;
+      }
+      song[currentSong].play();
     } else { 
       song[currentSong].rewind();
-      currentSong++;
-    } 
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs-1;
+      } else {
+        currentSong++;
+      }
+    }
+
+    //
     if (key == 'b' || key == 'B') {
-      currentSong--;
+      if ( song[currentSong].isPlaying() ) {
+        song[currentSong].pause();
+        song[currentSong].rewind();
+        if ( currentSong == numberOfSongs - numberOfSongs ) {
+          currentSong = numberOfSongs-1;
+        } else {
+          currentSong--;
+        }
+        song[currentSong].play();
+      } else { 
+        song[currentSong].rewind();
+        if ( currentSong == numberOfSongs - numberOfSongs ) {
+          currentSong = numberOfSongs-1;
+        } else {
+          currentSong--;
+        }
+      }
     }
   }
 }
