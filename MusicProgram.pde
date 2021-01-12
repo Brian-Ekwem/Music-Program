@@ -111,7 +111,6 @@ void setup() {
   fill(white);
   rect(songImgX, songImgY, songImgW, songImgH);
   rect(timeSX, timeSY, timeSW, timeSH);
-  rect(songNX, songNY, songNW, songNH);
   //
   fill(black);
   ellipse(playCX, playCY, playCD, playCD);
@@ -149,21 +148,19 @@ void setup() {
   } 
   fill(quitButtonColour);
   rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
-  textDraw(); //work on making the actual video player using shapes and stuff.
-  //MAKE THE BACKGROUND BLACK AND THE TEXT WHITE
+  textDraw(); //configure the buttons
 }
 
 
 void draw() {
-  /*
-  background (black);
-   rect(songNX, songNY, songNW, songNH);
-   fill(white); 
-   textAlign (CENTER, CENTER); 
-   //textFont(font, 25); 
-   text(songMetaData[currentSong].title(), songNX, songNY, songNW, songNH);
-   fill(255); 
-   */
+  font = createFont ("Arial", 55);
+  fill(reallyblack);
+  rect(songNX, songNY, songNW, songNH);
+  fill(white); 
+  textAlign (CENTER, CENTER); 
+  //textFont(font, 25); 
+  text(songMetaData[currentSong].title(), songNX, songNY, songNW, songNH);
+  fill(255);
 }
 
 void mousePressed() {
@@ -182,6 +179,7 @@ void mousePressed() {
       song[currentSong].play();
     }
   }
+  //
   if (mouseX>stopX && mouseX<stopX+stopW && mouseY>stopY && mouseY<stopY+stopH) {
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
@@ -192,6 +190,7 @@ void mousePressed() {
   }
   //
   if (mouseX>loopX && mouseX<loopX+loopD && mouseY>loopY && mouseY<loopY+loopD) song[currentSong].loop(loopIntNum);
+  //
 }
 
 void keyPressed() {
@@ -199,7 +198,7 @@ void keyPressed() {
   if ( key == 'p' || key == 'P' ) {//Play-Pause Button
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
-    } else if ( song[currentSong].position() == song[currentSong].length() ) {//.legnth() = end
+    } else if ( song[currentSong].position() == song[currentSong].length() ) {//.length() = end
       song[currentSong].rewind();
       song[currentSong].play();
     } else {
@@ -239,25 +238,24 @@ void keyPressed() {
         currentSong++;
       }
     }
-
-    //
-    if (key == 'b' || key == 'B') {
-      if ( song[currentSong].isPlaying() ) {
-        song[currentSong].pause();
-        song[currentSong].rewind();
-        if ( currentSong == numberOfSongs - numberOfSongs ) {
-          currentSong = numberOfSongs-1;
-        } else {
-          currentSong--;
-        }
-        song[currentSong].play();
-      } else { 
-        song[currentSong].rewind();
-        if ( currentSong == numberOfSongs - numberOfSongs ) {
-          currentSong = numberOfSongs-1;
-        } else {
-          currentSong--;
-        }
+  }
+  //
+  if (key == 'b' || key == 'B') {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs-1;
+      } else {
+        currentSong--;
+      }
+      song[currentSong].play();
+    } else { 
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs-1;
+      } else {
+        currentSong--;
       }
     }
   }
