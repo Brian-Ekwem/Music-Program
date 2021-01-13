@@ -148,8 +148,8 @@ void population() {
   backBW = nextBW;
   backBH = nextBH;
   //
-  loopX = width*4/15;
-  loopY = height*11.3/15;
+  loopX = width*8.3/15;
+  loopY = height*3/15;
   loopD = height*0.8/15;
   //
   picImageWidthRatio1 = 296.0/296.0; 

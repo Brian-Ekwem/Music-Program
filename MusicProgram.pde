@@ -24,6 +24,7 @@ float fastA1X, fastA1Y, fastA2X, fastA2Y, fastA3X, fastA3Y, fastB1X, fastB1Y, fa
 float rewA1X, rewA1Y, rewA2X, rewA2Y, rewA3X, rewA3Y, rewB1X, rewB1Y, rewB2X, rewB2Y, rewB3X, rewB3Y, stopX, stopY, stopW, stopH;
 float nextA1X, nextA1Y, nextA2X, nextA2Y, nextA3X, nextA3Y, nextBX, nextBY, nextBW, nextBH, loopX, loopY, loopD;
 float backA1X, backA1Y, backA2X, backA2Y, backA3X, backA3Y, backBX, backBY, backBW, backBH;
+Boolean nextOn=false, backOn=false, playOn=false, fastOn=false, rewOn=false, stopOn=false, loopOn=false;
 
 void setup() {
   fullScreen();
@@ -154,6 +155,8 @@ void setup() {
   fill(quitButtonColour);
   rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
   textDraw(); //configure the buttons
+  //
+  if (fastOn = true) song[currentSong].skip(1000);
 }
 
 void draw() {
@@ -169,7 +172,12 @@ void draw() {
 void mousePressed() {
   if (mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight) exit();
   //
-  if (mouseX>fastB1X && mouseX<fastB1X+fastB2X+fastB3X && mouseY>fastB1Y && mouseY<fastB1Y+fastB2Y+fastB3Y) song[currentSong].skip(1000); 
+  if (mouseX>fastB1X && mouseX<fastB1X+fastB2X+fastB3X && mouseY>fastB1Y && mouseY<fastB1Y+fastB2Y+fastB3Y) song[currentSong].skip(1000);
+  /*if (fastOn == true) {
+    fastOn = false;
+  } else {
+    fastOn = true;
+  }*/
   if (mouseX>rewB1X && mouseX<rewB1X+rewB2X+rewB3X && mouseY>rewB1Y && mouseY<rewB1Y+rewB2Y+rewB3Y) song[currentSong].skip(-1000); 
   //
   if (mouseX>play1X && mouseX<play1X+play2X+play3X && mouseY>play1Y && mouseY<play1Y+play2Y+play3Y) {
@@ -194,6 +202,45 @@ void mousePressed() {
   //
   if (mouseX>loopX && mouseX<loopX+loopD && mouseY>loopY && mouseY<loopY+loopD) song[currentSong].loop(loopIntNum);
   //
+  if (mouseX>nextA1X && mouseX<nextA1X+nextA2X+nextA3X && mouseY>nextA1Y && mouseY<nextA1Y+nextA2Y+nextA3Y) {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs-1 ) {
+        currentSong = numberOfSongs - numberOfSongs;
+      } else {
+        currentSong++;
+      }
+      song[currentSong].play();
+    } else { 
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs-1 ) {
+        currentSong = numberOfSongs - numberOfSongs;
+      } else {
+        currentSong++;
+      }
+    }
+  }
+  //
+  if (mouseX>backA1X && mouseX<backA1X+backA2X+backA3X && mouseY>backA1Y && mouseY<backA1Y+backA2Y+backA3Y) {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs-1;
+      } else {
+        currentSong--;
+      }
+      song[currentSong].play();
+    } else { 
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs-1;
+      } else {
+        currentSong--;
+      }
+    }
+  }
 }
 
 void keyPressed() {
@@ -207,11 +254,11 @@ void keyPressed() {
     } else {
       song[currentSong].play();
     }
-    if (currentSong == 0) { 
-      text(String textDraw3());
-    } else { 
-      text(songMetaData[currentSong].title(), width*3/15, height*9/15, width*4.7/15, height*1/15 );
-    }
+    /*if (currentSong == 0) { 
+     text(String textDraw3());
+     } else { 
+     text(songMetaData[currentSong].title(), width*3/15, height*9/15, width*4.7/15, height*1/15);
+     }*/
   }
   //
   if (key == 's' || key == 'S') {
