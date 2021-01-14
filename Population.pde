@@ -188,4 +188,10 @@ void population() {
   backrecY = height*11.3/15;
   backrecW = width*0.33/15;
   backrecH = height*0.5/15;
+  //
+  muteX = width*6.7/15;
+  muteY = height*10.6/15;
+  muteW = width*0.5/15;
+  muteH = height*0.5/15;
+  //
 }

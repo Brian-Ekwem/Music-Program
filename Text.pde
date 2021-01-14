@@ -10,6 +10,7 @@ String buttonText9 = "7.    June - Bobby Richards";
 String buttonText10 = "8.    Feels - Patrick Patrikios";
 String buttonText11 = "9.    Calvin Harris - josh pan";
 String buttonText12 = "10.   Brass Orchid - Bobby Richards";
+String buttonText13 = "Mute";
 PFont font;
 void textSetup() { 
   font = createFont ("Arial", 55);
@@ -96,5 +97,12 @@ void textDraw12() {
   textAlign (CENTER, CENTER); 
   textFont(font, 25);
   text(buttonText12, song10X, song10Y, song10W, song10H);
+  fill(255);
+}
+void textDraw13() {
+  fill(white); 
+  textAlign (CENTER, CENTER); 
+  textFont(font, 15);
+  text(buttonText13, muteX, muteY, muteW, muteH);
   fill(255);
 }

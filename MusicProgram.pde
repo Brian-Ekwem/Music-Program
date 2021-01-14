@@ -23,7 +23,7 @@ float timeSX, timeSY, timeSW, timeSH, songNX, songNY, songNW, songNH, play1X, pl
 float fastA1X, fastA1Y, fastA2X, fastA2Y, fastA3X, fastA3Y, fastB1X, fastB1Y, fastB2X, fastB2Y, fastB3X, fastB3Y;
 float rewA1X, rewA1Y, rewA2X, rewA2Y, rewA3X, rewA3Y, rewB1X, rewB1Y, rewB2X, rewB2Y, rewB3X, rewB3Y, stopX, stopY, stopW, stopH;
 float nextA1X, nextA1Y, nextA2X, nextA2Y, nextA3X, nextA3Y, nextBX, nextBY, nextBW, nextBH, loopX, loopY, loopD;
-float backA1X, backA1Y, backA2X, backA2Y, backA3X, backA3Y, backBX, backBY, backBW, backBH;
+float backA1X, backA1Y, backA2X, backA2Y, backA3X, backA3Y, backBX, backBY, backBW, backBH, muteX, muteY, muteW, muteH;
 float backrecX, backrecY, backrecW, backrecH, nextrecX, nextrecY, nextrecW, nextrecH, looprecX, looprecY, looprecW, looprecH, fastrecX, fastrecY, fastrecW, fastrecH, rewrecX, rewrecY, rewrecW, rewrecH, playrecX, playrecY, playrecW, playrecH;
 Boolean nextOn=false, backOn=false, playOn=false, fastOn=false, rewOn=false, stopOn=false, loopOn=false;
 
@@ -168,6 +168,9 @@ void setup() {
   rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
   textDraw(); //configure the buttons
   //
+  fill(black);
+  rect(muteX, muteY, muteW, muteH);
+  textDraw13();
 }
 
 void draw() {
@@ -175,8 +178,8 @@ void draw() {
   rect(width*3/15, height*9/15, width*4.7/15, height*1/15);
   fill(white); 
   textAlign (CENTER, CENTER); 
-  textFont(font, 45); 
-  text(songMetaData[0].title(), width*3/15, height*9/15, width*4.7/15, height*1/15);
+  textFont(font, 35); 
+  text(songMetaData[currentSong].title(), width*3/15, height*9/15, width*4.7/15, height*1/15);
   fill(255);
 }
 
@@ -248,6 +251,14 @@ void mousePressed() {
       }
     }
   }
+  //
+  if (mouseX>muteX && mouseX<muteX+muteW && mouseY>muteY && mouseY<muteY+muteH) {
+    if ( song[currentSong].isMuted() ) {
+      song[currentSong].unmute();
+    } else {
+      song[currentSong].mute();
+    }
+  }
 }
 
 void keyPressed() {
@@ -261,11 +272,11 @@ void keyPressed() {
     } else {
       song[currentSong].play();
     }
-    if (currentSong == 0) { 
+    /*if (currentSong == 0) { 
       text(String);
     } else { 
       text(songMetaData[currentSong].title(), width*3/15, height*9/15, width*4.7/15, height*1/15);
-    }
+    }*/
   }
   //
   if (key == 's' || key == 'S') {
