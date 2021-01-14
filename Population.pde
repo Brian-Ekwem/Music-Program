@@ -194,4 +194,124 @@ void population() {
   muteW = width*0.5/15;
   muteH = height*0.5/15;
   //
+  A1X = width*8.3/15;
+  A1Y = height*2.75/15;
+  A2X = width*8.55/15;
+  A2Y = height*3/15;
+  A3X = A1X;
+  A3Y = height*3.25/15;
+  //
+  B1X = width*8.3/15;
+  B1Y = height*3.75/15;
+  B2X = width*8.55/15;
+  B2Y = height*4/15;
+  B3X = A1X;
+  B3Y = height*4.25/15;
+  //
+  C1X = width*8.3/15;
+  C1Y = height*4.75/15;
+  C2X = width*8.55/15;
+  C2Y = height*5/15;
+  C3X = A1X;
+  C3Y = height*5.25/15;
+  //
+  D1X = width*8.3/15;
+  D1Y = height*5.75/15;
+  D2X = width*8.55/15;
+  D2Y = height*6/15;
+  D3X = A1X;
+  D3Y = height*6.25/15;
+  //
+  E1X = width*8.3/15;
+  E1Y = height*6.75/15;
+  E2X = width*8.55/15;
+  E2Y = height*7/15;
+  E3X = A1X;
+  E3Y = height*7.25/15;
+  //
+  F1X = width*8.3/15;
+  F1Y = height*7.75/15;
+  F2X = width*8.55/15;
+  F2Y = height*8/15;
+  F3X = A1X;
+  F3Y = height*8.25/15;
+  //
+  G1X = width*8.3/15;
+  G1Y = height*8.75/15;
+  G2X = width*8.55/15;
+  G2Y = height*9/15;
+  G3X = A1X;
+  G3Y = height*9.25/15;
+  //
+  H1X = width*8.3/15;
+  H1Y = height*9.75/15;
+  H2X = width*8.55/15;
+  H2Y = height*10/15;
+  H3X = A1X;
+  H3Y = height*10.25/15;
+  //
+  I1X = width*8.3/15;
+  I1Y = height*10.75/15;
+  I2X = width*8.55/15;
+  I2Y = height*11/15;
+  I3X = A1X;
+  I3Y = height*11.25/15;
+  //
+  J1X = width*8.3/15;
+  J1Y = height*11.75/15;
+  J2X = width*8.55/15;
+  J2Y = height*12/15;
+  J3X = A1X;
+  J3Y = height*12.25/15;
+  //
+  arecx = width*8.3/15;
+  arecy = height*2.75/15;
+  arecw = width*0.3/15;
+  arech = height*0.5/15;
+  //
+  brecx = width*8.3/15;
+  brecy = height*3.75/15;
+  brecw = width*0.3/15;
+  brech = height*0.5/15;
+  //
+  crecx = width*8.3/15;
+  crecy = height*4.75/15;
+  crecw = width*0.3/15;
+  crech = height*0.5/15;
+  //
+  drecx = width*8.3/15;
+  drecy = height*5.75/15;
+  drecw = width*0.3/15;
+  drech = height*0.5/15;
+  //
+  erecx = width*8.3/15;
+  erecy = height*6.75/15;
+  erecw = width*0.3/15;
+  erech = height*0.5/15;
+  //
+  frecx = width*8.3/15;
+  frecy = height*7.75/15;
+  frecw = width*0.3/15;
+  frech = height*0.5/15;
+  //
+  grecx = width*8.3/15;
+  grecy = height*8.75/15;
+  grecw = width*0.3/15;
+  grech = height*0.5/15;
+  //
+  hrecx = width*8.3/15;
+  hrecy = height*9.75/15;
+  hrecw = width*0.3/15;
+  hrech = height*0.5/15;
+  //
+  irecx = width*8.3/15;
+  irecy = height*10.75/15;
+  irecw = width*0.3/15;
+  irech = height*0.5/15;
+  //
+  jrecx = width*8.3/15;
+  jrecy = height*11.75/15;
+  jrecw = width*0.3/15;
+  jrech = height*0.5/15;
+  //
 }

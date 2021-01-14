@@ -1,15 +1,15 @@
 String buttonText = "X";
 String buttonText2 = "Loop";
-String buttonText3 = "1.    Stairway - Patrick Patrikios";
-String buttonText4 = "2.    Yah Yah - josh pan";
-String buttonText5 = "3.    Simple - Patrick Patrikios";
-String buttonText6 = "4.    Muriel - Bobby Richards";
-String buttonText7 = "5.    Lights - Patrick Patrikios";
-String buttonText8 = "6.    Just Dance - Patrick Patrikios";
-String buttonText9 = "7.    June - Bobby Richards";
-String buttonText10 = "8.    Feels - Patrick Patrikios";
-String buttonText11 = "9.    Calvin Harris - josh pan";
-String buttonText12 = "10.   Brass Orchid - Bobby Richards";
+String buttonText3 = "      Stairway - Patrick Patrikios";
+String buttonText4 = "      Yah Yah - josh pan";
+String buttonText5 = "      Simple - Patrick Patrikios";
+String buttonText6 = "      Muriel - Bobby Richards";
+String buttonText7 = "      Lights - Patrick Patrikios";
+String buttonText8 = "      Just Dance - Patrick Patrikios";
+String buttonText9 = "      June - Bobby Richards";
+String buttonText10 = "      Feels - Patrick Patrikios";
+String buttonText11 = "      Calvin Harris - josh pan";
+String buttonText12 = "      Brass Orchid - Bobby Richards";
 String buttonText13 = "Mute";
 PFont font;
 void textSetup() { 
