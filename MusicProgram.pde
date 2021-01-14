@@ -14,7 +14,7 @@ int loopIntNum = 1;
 PImage pic1;
 int currentSong = numberOfSongs - numberOfSongs;
 float quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight;
-color white=#FFFFFF, reallyblack=#000000, red=#FF0000, quitButtonColour, green=#04C602, black=#1C1C1C;
+color white=#FFFFFF, reallyblack=#000000, red=#FF0000, quitButtonColour, green=#04C602, black=#1C1C1C, playC, fastC;
 float backgroundX, backgroundY, backgroundW, backgroundH, listX, listY, listW, listH, picX1, picY1, picWidth1, picHeight1, picImageWidthRatio1, picImageHeightRatio1;
 float song1X, song1Y, song1W, song1H, song2X, song2Y, song2W, song2H, song3X, song3Y, song3W, song3H, song4X, song4Y, song4W, song4H;
 float song5X, song5Y, song5W, song5H, song6X, song6Y, song6W, song6H, song7X, song7Y, song7W, song7H, song8X, song8Y, song8W, song8H;
@@ -118,12 +118,22 @@ void setup() {
   image(pic1, picX1, picY1, picWidth1, picHeight1);
   rect(timeSX, timeSY, timeSW, timeSH);
   //
+  if (mouseX>playrecX && mouseX<playrecX+playrecW && mouseY>playrecY && mouseY<playrecY+playrecH) {
+    playC = white;
+  } else {
+    playC = green;
+  }
   fill(reallyblack);
   rect(playrecX, playrecY, playrecW, playrecH); 
   fill(black);
   ellipse(playCX, playCY, playCD, playCD);
-  fill(green);
+  fill(playC);
   triangle(play1X, play1Y, play2X, play2Y, play3X, play3Y);
+  if (mouseX>fastrecX && mouseX<fastrecX+fastrecW && mouseY>fastrecY && mouseY<fastrecY+fastrecH) {
+    fastC = green;
+  } else {
+    fastC = white;
+  }
   fill(reallyblack);
   rect(fastrecX, fastrecY, fastrecW, fastrecH);
   fill(white);
@@ -159,14 +169,14 @@ void setup() {
   ellipse(loopX, loopY, loopD, loopD);
   textDraw2();
   //
-  if ( mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight ) { 
+  if (mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight) { 
     quitButtonColour = red;
   } else { 
     quitButtonColour = white;
   } 
   fill(quitButtonColour);
   rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
-  textDraw(); //configure the buttons
+  textDraw(); 
   //
   fill(black);
   rect(muteX, muteY, muteW, muteH);
