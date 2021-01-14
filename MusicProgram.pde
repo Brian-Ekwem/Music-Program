@@ -14,7 +14,7 @@ int loopIntNum = 1;
 PImage pic1;
 int currentSong = numberOfSongs - numberOfSongs;
 float quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight;
-color white=#FFFFFF, reallyblack=#000000, red=#FF0000, quitButtonColour, green=#20AF25, black=#1C1C1C;
+color white=#FFFFFF, reallyblack=#000000, red=#FF0000, quitButtonColour, green=#04C602, black=#1C1C1C;
 float backgroundX, backgroundY, backgroundW, backgroundH, listX, listY, listW, listH, picX1, picY1, picWidth1, picHeight1, picImageWidthRatio1, picImageHeightRatio1;
 float song1X, song1Y, song1W, song1H, song2X, song2Y, song2W, song2H, song3X, song3Y, song3W, song3H, song4X, song4Y, song4W, song4H;
 float song5X, song5Y, song5W, song5H, song6X, song6Y, song6W, song6H, song7X, song7Y, song7W, song7H, song8X, song8Y, song8W, song8H;
@@ -160,9 +160,9 @@ void setup() {
   textDraw2();
   //
   if ( mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight ) { 
-    quitButtonColour = white;
-  } else { 
     quitButtonColour = red;
+  } else { 
+    quitButtonColour = white;
   } 
   fill(quitButtonColour);
   rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
@@ -175,12 +175,24 @@ void setup() {
 
 void draw() {
   fill(black);
+  rect(timeSX, timeSY, timeSW, timeSH);
+  fill(green);
+  float posx = map(song[currentSong].position(), 115, song[currentSong].length(), 375, 775);
+  strokeWeight(10);
+  line(posx, 512, 775, 512);
+  strokeWeight(5);
+  ellipse(posx, 512, 20, 20);
+  
+  //
+  strokeWeight(1);
+  fill(reallyblack);
   rect(width*3/15, height*9/15, width*4.7/15, height*1/15);
   fill(white); 
   textAlign (CENTER, CENTER); 
   textFont(font, 35); 
   text(songMetaData[currentSong].title(), width*3/15, height*9/15, width*4.7/15, height*1/15);
   fill(255);
+  //
 }
 
 void mousePressed() {
@@ -340,4 +352,7 @@ void keyPressed() {
       song[currentSong].mute();
     }
   }
+  //
+  println( "\nSong Position: ", "\t\t\t\t", song[currentSong].position(), "milliseconds" );
+  println( "Song Position:", (song[currentSong].position()/1000)/60, "minutes\t", (song[currentSong].position()/1000)-((song[currentSong].position()/1000)/60 * 60), "seconds" );
 }
