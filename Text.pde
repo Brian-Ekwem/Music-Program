@@ -23,7 +23,7 @@ void textDraw() {
   fill(255);
 }
 void textDraw2() { 
-  fill(white); 
+  fill(green); 
   textAlign (CENTER, CENTER); 
   textFont(font, 15);
   text(buttonText2, loopX, loopY, loopD);
@@ -100,7 +100,7 @@ void textDraw12() {
   fill(255);
 }
 void textDraw13() {
-  fill(white); 
+  fill(green); 
   textAlign (CENTER, CENTER); 
   textFont(font, 15);
   text(buttonText13, muteX, muteY, muteW, muteH);

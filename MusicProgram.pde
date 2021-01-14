@@ -14,7 +14,7 @@ int loopIntNum = 1;
 PImage pic1;
 int currentSong = numberOfSongs - numberOfSongs;
 float quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight;
-color white=#FFFFFF, reallyblack=#000000, red=#FF0000, quitButtonColour, green=#04C602, black=#1C1C1C, playC, fastC;
+color white=#FFFFFF, reallyblack=#000000, red=#FF0000, green=#04C602, black=#1C1C1C, buttonC;
 float backgroundX, backgroundY, backgroundW, backgroundH, listX, listY, listW, listH, picX1, picY1, picWidth1, picHeight1, picImageWidthRatio1, picImageHeightRatio1;
 float song1X, song1Y, song1W, song1H, song2X, song2Y, song2W, song2H, song3X, song3Y, song3W, song3H, song4X, song4Y, song4W, song4H;
 float song5X, song5Y, song5W, song5H, song6X, song6Y, song6W, song6H, song7X, song7Y, song7W, song7H, song8X, song8Y, song8W, song8H;
@@ -118,44 +118,6 @@ void setup() {
   image(pic1, picX1, picY1, picWidth1, picHeight1);
   rect(timeSX, timeSY, timeSW, timeSH);
   //
-  if (mouseX>playrecX && mouseX<playrecX+playrecW && mouseY>playrecY && mouseY<playrecY+playrecH) {
-    playC = white;
-  } else {
-    playC = green;
-  }
-  fill(reallyblack);
-  rect(playrecX, playrecY, playrecW, playrecH); 
-  fill(black);
-  ellipse(playCX, playCY, playCD, playCD);
-  fill(playC);
-  triangle(play1X, play1Y, play2X, play2Y, play3X, play3Y);
-  if (mouseX>fastrecX && mouseX<fastrecX+fastrecW && mouseY>fastrecY && mouseY<fastrecY+fastrecH) {
-    fastC = green;
-  } else {
-    fastC = white;
-  }
-  fill(reallyblack);
-  rect(fastrecX, fastrecY, fastrecW, fastrecH);
-  fill(white);
-  triangle(fastA1X, fastA1Y, fastA2X, fastA2Y, fastA3X, fastA3Y);
-  fill(white);
-  triangle(fastB1X, fastB1Y, fastB2X, fastB2Y, fastB3X, fastB3Y);
-  fill(reallyblack);
-  rect(rewrecX, rewrecY, rewrecW, rewrecH);
-  fill(white);
-  triangle(rewA1X, rewA1Y, rewA2X, rewA2Y, rewA3X, rewA3Y);
-  fill(white);
-  triangle(rewB1X, rewB1Y, rewB2X, rewB2Y, rewB3X, rewB3Y);
-  //
-  fill(white);
-  rect(stopX, stopY, stopW, stopH);
-  //
-  fill(reallyblack);
-  rect(nextrecX, nextrecY, nextrecW, nextrecH);
-  fill(green);
-  triangle(nextA1X, nextA1Y, nextA2X, nextA2Y, nextA3X, nextA3Y);
-  fill(green);
-  rect(nextBX, nextBY, nextBW, nextBH);
   fill(reallyblack);
   rect(backrecX, backrecY, backrecW, backrecH);
   fill(green);
@@ -169,18 +131,6 @@ void setup() {
   ellipse(loopX, loopY, loopD, loopD);
   textDraw2();
   //
-  if (mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight) { 
-    quitButtonColour = red;
-  } else { 
-    quitButtonColour = white;
-  } 
-  fill(quitButtonColour);
-  rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
-  textDraw(); 
-  //
-  fill(black);
-  rect(muteX, muteY, muteW, muteH);
-  textDraw13();
 }
 
 void draw() {
@@ -192,7 +142,20 @@ void draw() {
   line(posx, 512, 775, 512);
   strokeWeight(5);
   ellipse(posx, 512, 20, 20);
-  
+  //
+  if (mouseX>quitButtonX && mouseX<quitButtonX+quitButtonWidth && mouseY>quitButtonY && mouseY<quitButtonY+quitButtonHeight) { 
+    buttonC = red;
+  } else { 
+    buttonC = white;
+  } 
+  strokeWeight(1);
+  fill(buttonC);
+  rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
+  textDraw(); 
+  //
+  fill(black);
+  rect(muteX, muteY, muteW, muteH);
+  textDraw13();
   //
   strokeWeight(1);
   fill(reallyblack);
@@ -203,6 +166,73 @@ void draw() {
   text(songMetaData[currentSong].title(), width*3/15, height*9/15, width*4.7/15, height*1/15);
   fill(255);
   //
+  if (mouseX>playrecX && mouseX<playrecX+playrecW && mouseY>playrecY && mouseY<playrecY+playrecH) {
+    buttonC = green;
+  } else {
+    buttonC = white;
+  }
+  fill(reallyblack);
+  rect(playrecX, playrecY, playrecW, playrecH); 
+  fill(black);
+  ellipse(playCX, playCY, playCD, playCD);
+  fill(buttonC);
+  triangle(play1X, play1Y, play2X, play2Y, play3X, play3Y);
+  //
+  if (mouseX>fastrecX && mouseX<fastrecX+fastrecW && mouseY>fastrecY && mouseY<fastrecY+fastrecH) {
+    buttonC = green;
+  } else {
+    buttonC = white;
+  }
+  fill(reallyblack);
+  rect(fastrecX, fastrecY, fastrecW, fastrecH);
+  fill(buttonC);
+  triangle(fastA1X, fastA1Y, fastA2X, fastA2Y, fastA3X, fastA3Y);
+  fill(buttonC);
+  triangle(fastB1X, fastB1Y, fastB2X, fastB2Y, fastB3X, fastB3Y);
+  //
+  if (mouseX>rewrecX && mouseX<rewrecX+rewrecW && mouseY>rewrecY && mouseY<rewrecY+rewrecH) {
+    buttonC = green;
+  } else {
+    buttonC = white;
+  }
+  fill(reallyblack);
+  rect(rewrecX, rewrecY, rewrecW, rewrecH);
+  fill(buttonC);
+  triangle(rewA1X, rewA1Y, rewA2X, rewA2Y, rewA3X, rewA3Y);
+  fill(buttonC);
+  triangle(rewB1X, rewB1Y, rewB2X, rewB2Y, rewB3X, rewB3Y);
+  //
+  if (mouseX>stopX && mouseX<stopX+stopW && mouseY>stopY && mouseY<stopY+stopH) {
+    buttonC = red;
+  } else {
+    buttonC = white;
+  }
+  fill(buttonC);
+  rect(stopX, stopY, stopW, stopH);
+  //
+  if (mouseX>nextrecX && mouseX<nextrecX+nextrecW && mouseY>nextrecY && mouseY<nextrecY+nextrecH) {
+    buttonC = green;
+  } else {
+    buttonC = white;
+  }
+  fill(reallyblack);
+  rect(nextrecX, nextrecY, nextrecW, nextrecH);
+  fill(buttonC);
+  triangle(nextA1X, nextA1Y, nextA2X, nextA2Y, nextA3X, nextA3Y);
+  fill(buttonC);
+  rect(nextBX, nextBY, nextBW, nextBH);
+  //
+  if (mouseX>backrecX && mouseX<backrecX+backrecW && mouseY>backrecY && mouseY<backrecY+backrecH) {
+    buttonC = green;
+  } else {
+    buttonC = white;
+  }
+  fill(reallyblack);
+  rect(backrecX, backrecY, backrecW, backrecH);
+  fill(buttonC);
+  triangle(backA1X, backA1Y, backA2X, backA2Y, backA3X, backA3Y);
+  fill(buttonC);
+  rect(backBX, backBY, backBW, backBH);
 }
 
 void mousePressed() {
@@ -295,10 +325,10 @@ void keyPressed() {
       song[currentSong].play();
     }
     /*if (currentSong == 0) { 
-      text(String);
-    } else { 
-      text(songMetaData[currentSong].title(), width*3/15, height*9/15, width*4.7/15, height*1/15);
-    }*/
+     text(String);
+     } else { 
+     text(songMetaData[currentSong].title(), width*3/15, height*9/15, width*4.7/15, height*1/15);
+     }*/
   }
   //
   if (key == 's' || key == 'S') {
