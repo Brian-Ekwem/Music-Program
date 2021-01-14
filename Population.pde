@@ -148,8 +148,8 @@ void population() {
   backBW = nextBW;
   backBH = nextBH;
   //
-  loopX = width*8.3/15;
-  loopY = height*3/15;
+  loopX = width*3.5/15;
+  loopY = height*11/15;
   loopD = height*0.8/15;
   //
   picImageWidthRatio1 = 296.0/296.0; 
@@ -158,4 +158,34 @@ void population() {
   picY1 = songImgY;
   picWidth1 = songImgW;
   picHeight1 = songImgH;
+  //
+  fastrecX = width*6/15;
+  fastrecY = height*10.6/15;
+  fastrecW = width*0.5/15;
+  fastrecH = height*0.5/15;
+  //
+  playrecX = width*5.17/15;
+  playrecY = height*10.3/15;
+  playrecW = width*0.47/15;
+  playrecH = height*0.9/15;
+  //
+  rewrecX = width*4.25/15;
+  rewrecY = height*10.6/15;
+  rewrecW = width*0.5/15;
+  rewrecH = height*0.5/15;
+  //
+  looprecX = width*3.3/15;
+  looprecY = height*10.6/15;
+  looprecW = width*0.8/15;
+  looprecH = height*0.8/15;
+  //
+  nextrecX = width*6/15;
+  nextrecY = height*11.3/15;
+  nextrecW = width*0.33/15;
+  nextrecH = height*0.5/15;
+  //
+  backrecX = width*4.45/15;
+  backrecY = height*11.3/15;
+  backrecW = width*0.33/15;
+  backrecH = height*0.5/15;
 }
