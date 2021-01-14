@@ -262,7 +262,7 @@ void keyPressed() {
       song[currentSong].play();
     }
     if (currentSong == 0) { 
-      text(String textDraw3());
+      text(String);
     } else { 
       text(songMetaData[currentSong].title(), width*3/15, height*9/15, width*4.7/15, height*1/15);
     }
@@ -319,6 +319,14 @@ void keyPressed() {
       } else {
         currentSong--;
       }
+    }
+  }
+  //
+  if ( key=='m' || key=='M' ) {
+    if ( song[currentSong].isMuted() ) {
+      song[currentSong].unmute();
+    } else {
+      song[currentSong].mute();
     }
   }
 }
