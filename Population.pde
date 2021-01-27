@@ -107,9 +107,9 @@ void population() {
   rewA2Y = height*10.87/15;
   rewA3X = rewA1X;
   rewA3Y = height*11.13/15;
+  //
   rewB1X = width*4.55/15;
   rewB1Y = height*10.6/15;
-  //
   rewB2X = width*4.25/15;
   rewB2Y = height*10.87/15;
   rewB3X = rewB1X;
